@@ -14,6 +14,11 @@
 3: 将GPS模块的TX, RX 分别接入Arduino的RX, TX模块 (5, 6号串口), GPS模块的VCC, GND 分别接入Arduino的5V, GND
 4: 如果需要调试，接入Arduino的RX, TX模块 (10, 11号串口)
 
+## Lib库安装
+## Copy下面两个库到这个目录 例如 C:\Users\lufei\Documents\Arduino\libraries
+1: TinyGPSPlus
+2: TimerOne
+
 ## 初始化完成说明
 1: 4G模块插入SIM卡， 接入电源后，将PWK和GND连接1.5秒，直到4G模块出现闪灯
 2: GPS的天线需要在室外或者靠近窗户, GPS模块出现闪灯
