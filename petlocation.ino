@@ -51,6 +51,7 @@ void loop() {
   if (gps.gpsRead()) {
     gps.parseGpsBuffer();
     gps.printGpsBuffer();
+    // TODO 这边如何防止边界情况频繁进出， 如何在发送短信告警后，冷却一段时间
     int dis = gps.getDisFrom(HomeLat, HomeLon);
     if ( dis > AlarmDistance) {
       alermDis(dis);
