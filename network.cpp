@@ -5,9 +5,6 @@
 
 #define air780Serail  Serial
 
-char phoneNumber[] = "18018689132";		 //替换成目标手机号
-char TESTMSG[]     = "7EF453EF601D";	 //维可思	//中文短信，用uicode工具转换,然后把空格去掉	
-
 unsigned long  Time_Cont = 0;         //定时器计数器
 
 #define Success 1U
@@ -18,7 +15,7 @@ int L = 13; //LED指示灯引脚
 NetWork::NetWork(uint32_t baudRate, SoftwareSerial *_debugSerial)
 :_baudRate(baudRate),
   debugSerial(_debugSerial)
- {
+{
 }
 
 void Timer1_handler(void)
@@ -39,7 +36,7 @@ void NetWork::begin() {
   debugSerial->write("\r\n network end!");
 }
 
-void NetWork::sendMessage(char *msg)
+void NetWork::sendMessage(char *phoneNumber, char *msg)
 {
 	char send_buf[40] = {0};
 	memset(send_buf, 0, 40);    //清空
@@ -126,24 +123,6 @@ void NetWork::errorLog(int num)
 			resetFunc();
 		}
 	}
-}
-
-unsigned char nibble2c(unsigned char c)
-{
-   if ((c>='0') && (c<='9'))
-      return c-'0' ;
-   if ((c>='A') && (c<='F'))
-      return c+10-'A' ;
-   if ((c>='a') && (c<='a'))
-      return c+10-'a' ;
-   return -1 ;
-}
-
-unsigned char hex2c(unsigned char c1, unsigned char c2)
-{
-   if(c1 >= 0)
-      return c1*16 + c2 ;
-   return 0 ;
 }
 
 unsigned int NetWork::sendCommand(char *Command, char *Response, unsigned long Timeout, unsigned char Retry)

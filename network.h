@@ -4,14 +4,14 @@
 
 #include <Arduino.h>
 
-const unsigned int AirRxBufferLength = 600;
+const unsigned int AirRxBufferLength = 300;
 
 class SoftwareSerial;
 class NetWork {
   public:
     NetWork(uint32_t baudRate, SoftwareSerial *debugSerial);
     void begin();
-    void sendMessage(char *msg);
+    void sendMessage(char *phoneNumber, char *msg);
   private:
     void initair780();
     void handAT();
